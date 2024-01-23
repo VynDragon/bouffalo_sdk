@@ -2,6 +2,7 @@ out/*
 build/*
 .vscode/settings.json
 .settings
+.venv
 *.pyc
 
 **/.cdk
