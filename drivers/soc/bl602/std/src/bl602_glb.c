@@ -394,7 +394,7 @@ BL_Err_Type ATTR_CLOCK_SECTION GLB_Set_System_CLK(GLB_PLL_XTAL_Type xtalType, GL
 __WEAK
 BL_Err_Type ATTR_CLOCK_SECTION System_Core_Clock_Update_From_RC32M(void)
 {
-    sf_ctrl_cfg_type sfCtrlCfg = {
+    struct sf_ctrl_cfg_type sfCtrlCfg = {
         .owner = SF_CTRL_OWNER_IAHB,
         .clk_delay = 1,
         .clk_invert = 1,

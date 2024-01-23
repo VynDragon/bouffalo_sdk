@@ -25,17 +25,18 @@
 *******************************************************************************/
 uint32_t ATTR_CLOCK_SECTION bflb_clk_get_system_clock(uint8_t type)
 {
+    return Clock_System_Clock_Get(type);
     switch (type) {
         case BFLB_SYSTEM_ROOT_CLOCK:
-            return bflb_clock_get_root();
+            return Clock_System_Clock_Get(type);
         case BFLB_SYSTEM_CPU_CLK:
-            return bflb_clock_get_fclk();
+            return Clock_System_Clock_Get(type);
         case BFLB_SYSTEM_PBCLK:
-            return bflb_clock_get_bclk();
+            return Clock_System_Clock_Get(type);
         case BFLB_SYSTEM_XCLK:
-            return bflb_clock_get_xclk();
+            return Clock_System_Clock_Get(type);
         case BFLB_SYSTEM_32K_CLK:
-            return bflb_clock_get_f32k();
+            return Clock_System_Clock_Get(type);
         default:
             return 0;
     }
@@ -51,39 +52,41 @@ uint32_t ATTR_CLOCK_SECTION bflb_clk_get_system_clock(uint8_t type)
  * @return NONE
  *
 *******************************************************************************/
+
 uint32_t ATTR_CLOCK_SECTION bflb_clk_get_peripheral_clock(uint8_t type, uint8_t idx)
 {
     switch (type) {
         case BFLB_DEVICE_TYPE_ADC:
-            return bflb_clock_get_adc();
+            return Clock_Peripheral_Clock_Get(type);
         case BFLB_DEVICE_TYPE_DAC:
-            return bflb_clock_get_dac();
+            return Clock_Peripheral_Clock_Get(type);
         case BFLB_DEVICE_TYPE_UART:
-            return bflb_clock_get_uart();
+            ATTR_FALLTHROUGH();
         case BFLB_DEVICE_TYPE_SPI:
-            return bflb_clock_get_spi();
+            return Clock_Peripheral_Clock_Get(type);
         case BFLB_DEVICE_TYPE_I2C:
-            return bflb_clock_get_i2c();
+            return Clock_Peripheral_Clock_Get(type);
         case BFLB_DEVICE_TYPE_PWM:
-            return bflb_clock_get_pwm();
-        case BFLB_DEVICE_TYPE_TIMER:
-            return bflb_clock_get_timer(idx);
-        case BFLB_DEVICE_TYPE_WDT:
-            return bflb_clock_get_wdt();
+            return Clock_Peripheral_Clock_Get(type);
         case BFLB_DEVICE_TYPE_FLASH:
-            return bflb_clock_get_flash();
+            return Clock_Peripheral_Clock_Get(type);
         case BFLB_DEVICE_TYPE_IR:
-            return bflb_clock_get_ir();
-        case BFLB_DEVICE_TYPE_PKA:
-            return bflb_clock_get_pka();
-        case BFLB_DEVICE_TYPE_SDH:
-            return bflb_clock_get_sdh();
-        case BFLB_DEVICE_TYPE_CAMERA:
-            return bflb_clock_get_cam();
-        case BFLB_DEVICE_TYPE_DBI:
-            return bflb_clock_get_dbi();
-        case BFLB_DEVICE_TYPE_I2S:
-            return bflb_clock_get_i2s();
+            return Clock_Peripheral_Clock_Get(type);
+/*        case BFLB_DEVICE_TYPE_TIMER:
+ *            return bflb_clock_get_timer(idx);
+ *        case BFLB_DEVICE_TYPE_WDT:
+ *            return bflb_clock_get_wdt();
+ *        case BFLB_DEVICE_TYPE_PKA:
+ *            return bflb_clock_get_pka();
+ *        case BFLB_DEVICE_TYPE_SDH:
+ *            return bflb_clock_get_sdh();
+ *        case BFLB_DEVICE_TYPE_CAMERA:
+ *            return bflb_clock_get_cam();
+ *        case BFLB_DEVICE_TYPE_DBI:
+ *            return bflb_clock_get_dbi();
+ *        case BFLB_DEVICE_TYPE_I2S:
+ *            return bflb_clock_get_i2s();
+ */
         default:
             return 0;
     }
