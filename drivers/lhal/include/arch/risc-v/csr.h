@@ -322,23 +322,23 @@
 #define READ_CSR(reg) \
   ({ \
      unsigned long tmp; \
-     asm volatile("csrr %0, " CSR_STR(reg) : "=r"(tmp)); \
+     __asm__ volatile("csrr %0, " CSR_STR(reg) : "=r"(tmp)); \
      tmp; \
   })
 
 #define WRITE_CSR(reg, val) \
   ({ \
-     asm volatile("csrw " CSR_STR(reg) ", %0" :: "rK"(val)); \
+     __asm__ volatile("csrw " CSR_STR(reg) ", %0" :: "rK"(val)); \
   })
 
 #define SET_CSR(reg, bits) \
   ({ \
-     asm volatile("csrs " CSR_STR(reg) ", %0" :: "rK"(bits)); \
+     __asm__ volatile("csrs " CSR_STR(reg) ", %0" :: "rK"(bits)); \
   })
 
 #define CLEAR_CSR(reg, bits) \
   ({ \
-     asm volatile("csrc " CSR_STR(reg) ", %0" :: "rK"(bits)); \
+     __asm__ volatile("csrc " CSR_STR(reg) ", %0" :: "rK"(bits)); \
   })
 
 /* In pmpcfg (PMP configuration) register */

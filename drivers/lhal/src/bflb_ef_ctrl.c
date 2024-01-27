@@ -366,7 +366,7 @@ static void ATTR_TCM_SECTION bflb_ef_ctrl_load_efuse_r0(struct bflb_device_s *de
         if (timeout == 0) {
             break;
         }
-    } while ((reg_val & EF_CTRL_EF_IF_0_BUSY_MSK) || (!(reg_val & EF_CTRL_EF_IF_0_AUTOLOAD_DONE_MSK)));
+    } while ((reg_val & EF_CTRL_EF_IF_0_BUSY_MASK) || (!(reg_val & EF_CTRL_EF_IF_0_AUTOLOAD_DONE_MASK)));
 
     /* Switch to AHB clock */
     reg_val = (EF_CTRL_EFUSE_CTRL_PROTECT) |
@@ -481,7 +481,7 @@ static int ATTR_TCM_SECTION bflb_ef_ctrl_busy(struct bflb_device_s *dev)
 
     reg_val = getreg32(BFLB_EF_CTRL_BASE + EF_CTRL_EF_IF_CTRL_0_OFFSET);
 
-    if (reg_val & EF_CTRL_EF_IF_0_BUSY_MSK) {
+    if (reg_val & EF_CTRL_EF_IF_0_BUSY_MASK) {
         return 1;
     }
 
@@ -509,7 +509,7 @@ int ATTR_TCM_SECTION bflb_ef_ctrl_autoload_done(struct bflb_device_s *dev)
 
     reg_val = getreg32(BFLB_EF_CTRL_BASE + EF_CTRL_EF_IF_CTRL_0_OFFSET);
 
-    if (reg_val & EF_CTRL_EF_IF_0_AUTOLOAD_DONE_MSK) {
+    if (reg_val & EF_CTRL_EF_IF_0_AUTOLOAD_DONE_MASK) {
         return 1;
     }
 
