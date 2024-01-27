@@ -36,6 +36,7 @@
 
 #include "bl602_hbn.h"
 #include "bl602_glb.h"
+#include "bflb_acomp.h"
 #include "bflb_xip_sflash.h"
 // #include "risc-v/Core/Include/clic.h"
 
@@ -160,23 +161,25 @@ void ATTR_TCM_SECTION HBN_Mode_Enter_Ext(HBN_APP_CFG_Type *cfg)
 *******************************************************************************/
 #ifndef BFLB_USE_ROM_DRIVER
 __WEAK
-void ATTR_TCM_SECTION HBN_Power_Down_Flash(SPI_Flash_Cfg_Type *flashCfg)
+void ATTR_TCM_SECTION HBN_Power_Down_Flash(spi_flash_cfg_type *flashCfg)
 {
-    SPI_Flash_Cfg_Type bhFlashCfg;
+    spi_flash_cfg_type bhFlashCfg;
 
     if (flashCfg == NULL) {
-        SFlash_Cache_Flush();
-        XIP_SFlash_Read_Via_Cache_Need_Lock(BL602_FLASH_XIP_BASE + 8 + 4, (uint8_t *)(&bhFlashCfg), sizeof(SPI_Flash_Cfg_Type));
-        SFlash_Cache_Flush();
+        /* "fix this some time" from bl702 headers
+         * SFlash_Cache_Flush(); */
+        bflb_xip_sflash_read_via_cache_need_lock(BL602_FLASH_XIP_BASE + 8 + 4, (uint8_t *)(&bhFlashCfg), sizeof(spi_flash_cfg_type), 0, 0);
+        /* "fix this some time" from bl702 headers
+         * SFlash_Cache_Flush(); */
 
-        SF_Ctrl_Set_Owner(SF_CTRL_OWNER_SAHB);
-        SFlash_Reset_Continue_Read(&bhFlashCfg);
+        bflb_sf_ctrl_set_owner(SF_CTRL_OWNER_SAHB);
+        bflb_sflash_reset_continue_read(&bhFlashCfg);
     } else {
-        SF_Ctrl_Set_Owner(SF_CTRL_OWNER_SAHB);
-        SFlash_Reset_Continue_Read(flashCfg);
+        bflb_sf_ctrl_set_owner(SF_CTRL_OWNER_SAHB);
+        bflb_sflash_reset_continue_read(flashCfg);
     }
 
-    SFlash_Powerdown();
+    bflb_sflash_powerdown();
 }
 #endif
 #if 1
@@ -1010,18 +1013,21 @@ BL_Err_Type ATTR_CLOCK_SECTION HBN_Power_Off_RC32K(void)
 __WEAK
 BL_Err_Type ATTR_CLOCK_SECTION HBN_Trim_RC32K(void)
 {
-    Efuse_Ana_RC32K_Trim_Type trim;
+    bflb_ef_ctrl_com_trim_t trim;
     int32_t tmpVal = 0;
+    struct bflb_device_s *ef_ctrl;
 
-    EF_Ctrl_Read_RC32K_Trim(&trim);
+    ef_ctrl = bflb_device_get_by_name("ef_ctrl");
 
-    if (trim.trimRc32kExtCodeEn) {
-        if (trim.trimRc32kCodeFrExtParity == EF_Ctrl_Get_Trim_Parity(trim.trimRc32kCodeFrExt, 10)) {
+    bflb_ef_ctrl_read_common_trim(ef_ctrl, "rc32k", &trim, 1);
+
+    if (trim.en) {
+        if (trim.parity == bflb_ef_ctrl_get_trim_parity(trim.value, 10)) {
             tmpVal = BL_RD_REG(HBN_BASE, HBN_RC32K_CTRL0);
-            tmpVal = BL_SET_REG_BITS_VAL(tmpVal, HBN_RC32K_CODE_FR_EXT, trim.trimRc32kCodeFrExt);
+            tmpVal = BL_SET_REG_BITS_VAL(tmpVal, HBN_RC32K_CODE_FR_EXT, trim.value);
             tmpVal = BL_SET_REG_BIT(tmpVal, HBN_RC32K_EXT_CODE_EN);
             BL_WR_REG(HBN_BASE, HBN_RC32K_CTRL0, tmpVal);
-            BL602_Delay_US(2);
+            arch_delay_us(2);
             return SUCCESS;
         }
     }

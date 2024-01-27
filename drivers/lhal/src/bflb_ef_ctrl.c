@@ -366,7 +366,7 @@ static void ATTR_TCM_SECTION bflb_ef_ctrl_load_efuse_r0(struct bflb_device_s *de
         if (timeout == 0) {
             break;
         }
-    } while ((reg_val & EF_CTRL_EF_IF_0_BUSY_MASK) || (!(reg_val & EF_CTRL_EF_IF_0_AUTOLOAD_DONE_MASK)));
+    } while ((reg_val & EF_CTRL_EF_IF_0_BUSY_MSK) || (!(reg_val & EF_CTRL_EF_IF_0_AUTOLOAD_DONE_MSK)));
 
     /* Switch to AHB clock */
     reg_val = (EF_CTRL_EFUSE_CTRL_PROTECT) |
@@ -436,11 +436,11 @@ static void ATTR_TCM_SECTION bflb_ef_ctrl_load_efuse_r1(struct bflb_device_s *de
     /* Wait for efuse control idle */
     do {
         reg_val = getreg32(BFLB_EF_CTRL_BASE + EF_CTRL_EF_IF_CTRL_1_OFFSET);
-    } while (reg_val & EF_CTRL_EF_IF_1_BUSY_MASK);
+    } while (reg_val & EF_CTRL_EF_IF_1_BUSY_MSK);
 
     do {
         reg_val = getreg32(BFLB_EF_CTRL_BASE + EF_CTRL_EF_IF_CTRL_0_OFFSET);
-    } while (!(reg_val & EF_CTRL_EF_IF_0_AUTOLOAD_DONE_MASK));
+    } while (!(reg_val & EF_CTRL_EF_IF_0_AUTOLOAD_DONE_MSK));
 
     /* Switch to AHB clock since often read efuse data after load */
     /* Note:ef_if_ctrl_1 has no EF_CTRL_EF_CLK_SAHB_DATA_SEL_POS bit as ef_if_ctrl_0,
@@ -481,7 +481,7 @@ static int ATTR_TCM_SECTION bflb_ef_ctrl_busy(struct bflb_device_s *dev)
 
     reg_val = getreg32(BFLB_EF_CTRL_BASE + EF_CTRL_EF_IF_CTRL_0_OFFSET);
 
-    if (reg_val & EF_CTRL_EF_IF_0_BUSY_MASK) {
+    if (reg_val & EF_CTRL_EF_IF_0_BUSY_MSK) {
         return 1;
     }
 
@@ -509,7 +509,7 @@ int ATTR_TCM_SECTION bflb_ef_ctrl_autoload_done(struct bflb_device_s *dev)
 
     reg_val = getreg32(BFLB_EF_CTRL_BASE + EF_CTRL_EF_IF_CTRL_0_OFFSET);
 
-    if (reg_val & EF_CTRL_EF_IF_0_AUTOLOAD_DONE_MASK) {
+    if (reg_val & EF_CTRL_EF_IF_0_AUTOLOAD_DONE_MSK) {
         return 1;
     }
 

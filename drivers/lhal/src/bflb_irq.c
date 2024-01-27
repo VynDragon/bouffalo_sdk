@@ -33,7 +33,7 @@ ATTR_TCM_SECTION uintptr_t bflb_irq_save(void)
 
     /* Read mstatus & clear machine interrupt enable (MIE) in mstatus */
 
-    asm volatile("csrrc %0, mstatus, %1"
+    __asm__ volatile("csrrc %0, mstatus, %1"
                  : "=r"(oldstat)
                  : "r"(MSTATUS_MIE));
     return oldstat;
@@ -43,7 +43,7 @@ ATTR_TCM_SECTION void bflb_irq_restore(uintptr_t flags)
 {
     /* Write flags to mstatus */
 
-    asm volatile("csrw mstatus, %0"
+    __asm__ volatile("csrw mstatus, %0"
                  : /* no output */
                  : "r"(flags));
 }

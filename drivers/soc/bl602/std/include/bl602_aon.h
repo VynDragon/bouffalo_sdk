@@ -41,6 +41,7 @@
 #include "hbn_reg.h"
 #include "pds_reg.h"
 #include "bl602_common.h"
+#include "bl602_ef_cfg.h"
 
 #ifdef __cplusplus
 extern "C" {
