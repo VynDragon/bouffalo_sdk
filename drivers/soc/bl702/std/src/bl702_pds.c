@@ -698,21 +698,28 @@ BL_Err_Type PDS_Int_Callback_Install(PDS_INT_Type intType, intCallback_Type *cbF
  *
 *******************************************************************************/
 #ifndef BFLB_USE_ROM_DRIVER
-__WEAK
 BL_Err_Type ATTR_CLOCK_SECTION PDS_Trim_RC32M(void)
 {
-    Efuse_Ana_RC32M_Trim_Type trim;
+    bflb_ef_ctrl_com_trim_t trim;
     int32_t tmpVal = 0;
+    struct bflb_device_s *ef_ctrl;
 
-    EF_Ctrl_Read_RC32M_Trim(&trim);
-
-    if (trim.trimRc32mExtCodeEn) {
-        if (trim.trimRc32mCodeFrExtParity == EF_Ctrl_Get_Trim_Parity(trim.trimRc32mCodeFrExt, 8)) {
+    ef_ctrl = bflb_device_get_by_name("ef_ctrl");
+    bflb_ef_ctrl_read_common_trim(ef_ctrl, "rc32m", &trim, 1);
+    if (trim.en) {
+        if (trim.parity == bflb_ef_ctrl_get_trim_parity(trim.value, 8)) {
             tmpVal = BL_RD_REG(PDS_BASE, PDS_RC32M_CTRL0);
-            tmpVal = BL_SET_REG_BITS_VAL(tmpVal, PDS_RC32M_CODE_FR_EXT, trim.trimRc32mCodeFrExt);
             tmpVal = BL_SET_REG_BIT(tmpVal, PDS_RC32M_EXT_CODE_EN);
             BL_WR_REG(PDS_BASE, PDS_RC32M_CTRL0, tmpVal);
-            BL702_Delay_US(2);
+            arch_delay_us(2);
+            tmpVal = BL_RD_REG(PDS_BASE, PDS_RC32M_CTRL2);
+            tmpVal = BL_SET_REG_BITS_VAL(tmpVal, PDS_RC32M_CODE_FR_EXT2, trim.value);
+            BL_WR_REG(PDS_BASE, PDS_RC32M_CTRL2, tmpVal);
+            tmpVal = BL_RD_REG(PDS_BASE, PDS_RC32M_CTRL2);
+            tmpVal = BL_SET_REG_BIT(tmpVal, PDS_RC32M_EXT_CODE_SEL);
+            BL_WR_REG(PDS_BASE, PDS_RC32M_CTRL2, tmpVal);
+            /* hw_5T + sw_5T  */
+            arch_delay_us(1);
             return SUCCESS;
         }
     }
