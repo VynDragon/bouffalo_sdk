@@ -346,6 +346,10 @@
 #define GPIO7_ADC_CH6 \
 	BFLB_PINMUX(7, adc, ch6, analog)
 
+/* gpio7_usb_dp */
+#define GPIO7_USB_DP \
+	BFLB_PINMUX(7, usb, dp, analog)
+
 /* gpio8_i2s_bclk */
 #define GPIO8_I2S_BCLK \
 	BFLB_PINMUX(8, i2s, bclk, periph)
@@ -413,6 +417,10 @@
 /* gpio8_adc_ch0 */
 #define GPIO8_ADC_CH0 \
 	BFLB_PINMUX(8, adc, ch0, analog)
+
+/* gpio8_usb_dm */
+#define GPIO8_USB_DM \
+	BFLB_PINMUX(8, usb, dm, analog)
 
 /* gpio9_i2s_fs */
 #define GPIO9_I2S_FS \
@@ -537,6 +545,10 @@
 /* gpio10_qdec0_b */
 #define GPIO10_QDEC0_B \
 	BFLB_PINMUX(10, qdec0, b, periph)
+
+/* gpio10_mic_bias */
+#define GPIO10_MIC_BIAS \
+	BFLB_PINMUX(10, mic, bias, analog)
 
 /* gpio11_i2s_di */
 #define GPIO11_I2S_DI \
@@ -670,6 +682,10 @@
 #define GPIO14_ADC_CH5 \
 	BFLB_PINMUX(14, adc, ch5, analog)
 
+/* gpio14_atest_out0 */
+#define GPIO14_ATEST_OUT0 \
+	BFLB_PINMUX(14, atest, out0, analog)
+
 /* gpio15_i2s_di */
 #define GPIO15_I2S_DI \
 	BFLB_PINMUX(15, i2s, di, periph)
@@ -733,6 +749,10 @@
 /* gpio15_adc_ch1 */
 #define GPIO15_ADC_CH1 \
 	BFLB_PINMUX(15, adc, ch1, analog)
+
+/* gpio15_atest_out1 */
+#define GPIO15_ATEST_OUT1 \
+	BFLB_PINMUX(15, atest, out1, analog)
 
 /* gpio17_flash1_d0 */
 #define GPIO17_FLASH1_D0 \
@@ -1178,6 +1198,10 @@
 #define GPIO22_QDEC1_B \
 	BFLB_PINMUX(22, qdec1, b, periph)
 
+/* gpio22_ir_tx */
+#define GPIO22_IR_TX \
+	BFLB_PINMUX(22, ir, tx, analog)
+
 /* gpio23_flash2_d2 */
 #define GPIO23_FLASH2_D2 \
 	BFLB_PINMUX(23, flash2, d2, periph)
@@ -1245,6 +1269,10 @@
 /* gpio23_qdec1_led */
 #define GPIO23_QDEC1_LED \
 	BFLB_PINMUX(23, qdec1, led, periph)
+
+/* gpio23_ir_tx */
+#define GPIO23_IR_TX \
+	BFLB_PINMUX(23, ir, tx, analog)
 
 /* gpio24_flash2_d1 */
 #define GPIO24_FLASH2_D1 \

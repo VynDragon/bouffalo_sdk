@@ -153,6 +153,7 @@ pins:
         series: [702, 704, 706]
         analog:
             - [adc, [ch6]]
+            - [usb, [dp]]
         periph:
             - [i2s, [di]]
             - [spi, [sclk]]
@@ -169,6 +170,7 @@ pins:
         series: [702, 704, 706]
         analog:
             - [adc, [ch0]]
+            - [usb, [dm]]
         periph:
             - [i2s, [bclk]]
             - [spi, [mosi]]
@@ -198,6 +200,8 @@ pins:
 
     gpio10:
         series: [704, 706]
+        analog:
+            - [mic, [bias]]
         periph:
             - [i2s, [do]]
             - [spi, [ss]]
@@ -245,6 +249,7 @@ pins:
         series: [702, 704, 706]
         analog:
             - [adc, [ch5]]
+            - [atest, [out0]]
         periph:
             - [i2s, [do]]
             - [spi, [ss]]
@@ -260,6 +265,7 @@ pins:
         series: [702, 704, 706]
         analog:
             - [adc, [ch1]]
+            - [atest, [out1]]
         periph:
             - [i2s, [di]]
             - [spi, [sclk]]
@@ -375,6 +381,8 @@ pins:
 
     gpio22:
         series: [704, 706]
+        analog:
+            - [ir, [tx]]
         periph:
             - [flash1, [d2]]
             - [i2s, [do]]
@@ -390,6 +398,8 @@ pins:
 
     gpio23:
         series: [702, 704, 706]
+        analog:
+            - [ir, [tx]]
         periph:
             - [flash2, [d2]]
             - [i2s, [di]]
