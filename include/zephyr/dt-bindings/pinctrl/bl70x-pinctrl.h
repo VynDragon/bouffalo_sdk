@@ -30,6 +30,7 @@
 #define BFLB_PINMUX_SIGNAL_blck                         0x00
 #define BFLB_PINMUX_SIGNAL_b                            0x00
 #define BFLB_PINMUX_SIGNAL_bclk                         0x00
+#define BFLB_PINMUX_SIGNAL_bias                         0x00
 #define BFLB_PINMUX_SIGNAL_cts                          0x01
 #define BFLB_PINMUX_SIGNAL_ch0                          0x00
 #define BFLB_PINMUX_SIGNAL_ch1                          0x00
@@ -50,6 +51,8 @@
 #define BFLB_PINMUX_SIGNAL_clk                          0x00
 #define BFLB_PINMUX_SIGNAL_do                           0x00
 #define BFLB_PINMUX_SIGNAL_di                           0x00
+#define BFLB_PINMUX_SIGNAL_dp                           0x00
+#define BFLB_PINMUX_SIGNAL_dm                           0x00
 #define BFLB_PINMUX_SIGNAL_d0                           0x00
 #define BFLB_PINMUX_SIGNAL_d1                           0x00
 #define BFLB_PINMUX_SIGNAL_d3                           0x00
@@ -67,6 +70,8 @@
 #define BFLB_PINMUX_SIGNAL_miso                         0x00
 #define BFLB_PINMUX_SIGNAL_mdc                          0x00
 #define BFLB_PINMUX_SIGNAL_mdio                         0x00
+#define BFLB_PINMUX_SIGNAL_out0                         0x00
+#define BFLB_PINMUX_SIGNAL_out1                         0x00
 #define BFLB_PINMUX_SIGNAL_pix_clk                      0x00
 #define BFLB_PINMUX_SIGNAL_pix_dat0                     0x00
 #define BFLB_PINMUX_SIGNAL_pix_dat1                     0x00
