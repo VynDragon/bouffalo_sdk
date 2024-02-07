@@ -406,7 +406,7 @@ BL_Err_Type ATTR_CLOCK_SECTION System_Core_Clock_Update_From_RC32M(void)
     /* Use RC32M as PLL ref source to set up PLL to 160M */
     GLB_Set_System_CLK(GLB_PLL_XTAL_RC32M, GLB_SYS_CLK_PLL160M);
     /* Flash controller also need changes since system (bus) clock changed */
-    SF_Ctrl_Enable(&sfCtrlCfg);
+    RomDriver_SF_Ctrl_Enable(&sfCtrlCfg);
     __NOP();
     __NOP();
     __NOP();

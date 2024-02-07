@@ -712,14 +712,6 @@ BL_Err_Type ATTR_CLOCK_SECTION PDS_Trim_RC32M(void)
             tmpVal = BL_SET_REG_BIT(tmpVal, PDS_RC32M_EXT_CODE_EN);
             BL_WR_REG(PDS_BASE, PDS_RC32M_CTRL0, tmpVal);
             arch_delay_us(2);
-            tmpVal = BL_RD_REG(PDS_BASE, PDS_RC32M_CTRL2);
-            tmpVal = BL_SET_REG_BITS_VAL(tmpVal, PDS_RC32M_CODE_FR_EXT2, trim.value);
-            BL_WR_REG(PDS_BASE, PDS_RC32M_CTRL2, tmpVal);
-            tmpVal = BL_RD_REG(PDS_BASE, PDS_RC32M_CTRL2);
-            tmpVal = BL_SET_REG_BIT(tmpVal, PDS_RC32M_EXT_CODE_SEL);
-            BL_WR_REG(PDS_BASE, PDS_RC32M_CTRL2, tmpVal);
-            /* hw_5T + sw_5T  */
-            arch_delay_us(1);
             return SUCCESS;
         }
     }

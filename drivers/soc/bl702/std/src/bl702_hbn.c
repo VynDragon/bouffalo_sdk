@@ -1016,18 +1016,21 @@ BL_Err_Type ATTR_CLOCK_SECTION HBN_Power_Off_RC32K(void)
 __WEAK
 BL_Err_Type ATTR_CLOCK_SECTION HBN_Trim_RC32K(void)
 {
-    Efuse_Ana_RC32K_Trim_Type trim;
+    bflb_ef_ctrl_com_trim_t trim;
     int32_t tmpVal = 0;
+    struct bflb_device_s *ef_ctrl;
 
-    EF_Ctrl_Read_RC32K_Trim(&trim);
+    ef_ctrl = bflb_device_get_by_name("ef_ctrl");
 
-    if (trim.trimRc32kExtCodeEn) {
-        if (trim.trimRc32kCodeFrExtParity == EF_Ctrl_Get_Trim_Parity(trim.trimRc32kCodeFrExt, 10)) {
+    bflb_ef_ctrl_read_common_trim(ef_ctrl, "rc32k", &trim, 1);
+
+    if (trim.en) {
+        if (trim.parity == bflb_ef_ctrl_get_trim_parity(trim.value, 10)) {
             tmpVal = BL_RD_REG(HBN_BASE, HBN_RC32K_CTRL0);
-            tmpVal = BL_SET_REG_BITS_VAL(tmpVal, HBN_RC32K_CODE_FR_EXT, trim.trimRc32kCodeFrExt);
+            tmpVal = BL_SET_REG_BITS_VAL(tmpVal, HBN_RC32K_CODE_FR_EXT, trim.value);
             tmpVal = BL_SET_REG_BIT(tmpVal, HBN_RC32K_EXT_CODE_EN);
             BL_WR_REG(HBN_BASE, HBN_RC32K_CTRL0, tmpVal);
-            BL702_Delay_US(2);
+            arch_delay_us(2);
             return SUCCESS;
         }
     }
