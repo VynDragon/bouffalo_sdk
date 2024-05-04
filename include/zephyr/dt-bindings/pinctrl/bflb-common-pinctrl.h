@@ -70,9 +70,9 @@
  * @param pincfg pinctrl_soc_pin_t bit field value.
  */
 #define BFLB_PINMUX_GET_PIN(pincfg)					  \
-	(((pincfg) >> BFLB_PINMUX_PIN_POS)  & BFLB_PINMUX_FUN_MASK)
+	(((pincfg) >> BFLB_PINMUX_PIN_POS)  & BFLB_PINMUX_PIN_MASK)
 #define BFLB_PINMUX_GET_SIGNAL(pincfg)					  \
-	(((pincfg) >> BFLB_PINMUX_SIGNAL_POS)  & BFLB_PINMUX_FUN_MASK)
+	(((pincfg) >> BFLB_PINMUX_SIGNAL_POS)  & BFLB_PINMUX_SIGNAL_MASK)
 #define BFLB_PINMUX_GET_MODE(pincfg)					  \
 	(((pincfg) >> BFLB_PINMUX_MODE_POS) & BFLB_PINMUX_MODE_MASK)
 #define BFLB_PINMUX_GET_INST(pincfg)					  \
