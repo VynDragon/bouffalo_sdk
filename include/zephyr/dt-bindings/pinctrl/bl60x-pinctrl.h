@@ -51,8 +51,8 @@
 #define BFLB_PINMUX_SIGNAL_gpio3                        0x00
 #define BFLB_PINMUX_SIGNAL_in                           0x00
 #define BFLB_PINMUX_SIGNAL_ip                           0x00
-#define BFLB_PINMUX_SIGNAL_mosi                         0x00
 #define BFLB_PINMUX_SIGNAL_miso                         0x00
+#define BFLB_PINMUX_SIGNAL_mosi                         0x00
 #define BFLB_PINMUX_SIGNAL_qn                           0x00
 #define BFLB_PINMUX_SIGNAL_qp                           0x00
 #define BFLB_PINMUX_SIGNAL_rts                          0x00
@@ -61,7 +61,6 @@
 #define BFLB_PINMUX_SIGNAL_sda                          0x00
 #define BFLB_PINMUX_SIGNAL_ss                           0x00
 #define BFLB_PINMUX_SIGNAL_sclk                         0x00
-#define BFLB_PINMUX_SIGNAL_sck                          0x00
 #define BFLB_PINMUX_SIGNAL_tx                           0x02
 #define BFLB_PINMUX_SIGNAL_tms                          0x00
 #define BFLB_PINMUX_SIGNAL_tdi                          0x00

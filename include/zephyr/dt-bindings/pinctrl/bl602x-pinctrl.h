@@ -18,9 +18,9 @@
 #define GPIO0_FLASH_D1 \
 	BFLB_PINMUX(0, flash, d1, periph)
 
-/* gpio0_spi_mosi */
-#define GPIO0_SPI_MOSI \
-	BFLB_PINMUX(0, spi, mosi, periph)
+/* gpio0_spi_miso */
+#define GPIO0_SPI_MISO \
+	BFLB_PINMUX(0, spi, miso, periph)
 
 /* gpio0_i2c_scl */
 #define GPIO0_I2C_SCL \
@@ -82,9 +82,9 @@
 #define GPIO1_FLASH_D2 \
 	BFLB_PINMUX(1, flash, d2, periph)
 
-/* gpio1_spi_miso */
-#define GPIO1_SPI_MISO \
-	BFLB_PINMUX(1, spi, miso, periph)
+/* gpio1_spi_mosi */
+#define GPIO1_SPI_MOSI \
+	BFLB_PINMUX(1, spi, mosi, periph)
 
 /* gpio1_i2c_sda */
 #define GPIO1_I2C_SDA \
@@ -266,9 +266,9 @@
 #define GPIO4_SDIO_DAT2 \
 	BFLB_PINMUX(4, sdio, dat2, periph)
 
-/* gpio4_spi_mosi */
-#define GPIO4_SPI_MOSI \
-	BFLB_PINMUX(4, spi, mosi, periph)
+/* gpio4_spi_miso */
+#define GPIO4_SPI_MISO \
+	BFLB_PINMUX(4, spi, miso, periph)
 
 /* gpio4_i2c_scl */
 #define GPIO4_I2C_SCL \
@@ -322,9 +322,9 @@
 #define GPIO4_ADC_CH1 \
 	BFLB_PINMUX(4, adc, ch1, analog)
 
-/* gpio5_spi_miso */
-#define GPIO5_SPI_MISO \
-	BFLB_PINMUX(5, spi, miso, periph)
+/* gpio5_spi_mosi */
+#define GPIO5_SPI_MOSI \
+	BFLB_PINMUX(5, spi, mosi, periph)
 
 /* gpio5_i2c_sda */
 #define GPIO5_I2C_SDA \
@@ -378,9 +378,9 @@
 #define GPIO5_ADC_CH4 \
 	BFLB_PINMUX(5, adc, ch4, analog)
 
-/* gpio7_spi_sck */
-#define GPIO7_SPI_SCK \
-	BFLB_PINMUX(7, spi, sck, periph)
+/* gpio7_spi_sclk */
+#define GPIO7_SPI_SCLK \
+	BFLB_PINMUX(7, spi, sclk, periph)
 
 /* gpio7_i2c_sda */
 #define GPIO7_I2C_SDA \
@@ -430,9 +430,9 @@
 #define GPIO7_JTAG_TDO \
 	BFLB_PINMUX(7, jtag, tdo, periph)
 
-/* gpio8_spi_mosi */
-#define GPIO8_SPI_MOSI \
-	BFLB_PINMUX(8, spi, mosi, periph)
+/* gpio8_spi_miso */
+#define GPIO8_SPI_MISO \
+	BFLB_PINMUX(8, spi, miso, periph)
 
 /* gpio8_i2c_scl */
 #define GPIO8_I2C_SCL \
@@ -546,9 +546,9 @@
 #define GPIO11_IR_RX \
 	BFLB_PINMUX(11, ir, rx, input)
 
-/* gpio12_spi_mosi */
-#define GPIO12_SPI_MOSI \
-	BFLB_PINMUX(12, spi, mosi, periph)
+/* gpio12_spi_miso */
+#define GPIO12_SPI_MISO \
+	BFLB_PINMUX(12, spi, miso, periph)
 
 /* gpio12_i2c_scl */
 #define GPIO12_I2C_SCL \
@@ -666,9 +666,9 @@
 #define GPIO14_DAC_CHB \
 	BFLB_PINMUX(14, dac, chb, analog)
 
-/* gpio16_spi_mosi */
-#define GPIO16_SPI_MOSI \
-	BFLB_PINMUX(16, spi, mosi, periph)
+/* gpio16_spi_miso */
+#define GPIO16_SPI_MISO \
+	BFLB_PINMUX(16, spi, miso, periph)
 
 /* gpio16_i2c_scl */
 #define GPIO16_I2C_SCL \
@@ -722,9 +722,9 @@
 #define GPIO17_FLASH_D3 \
 	BFLB_PINMUX(17, flash, d3, periph)
 
-/* gpio17_spi_miso */
-#define GPIO17_SPI_MISO \
-	BFLB_PINMUX(17, spi, miso, periph)
+/* gpio17_spi_mosi */
+#define GPIO17_SPI_MOSI \
+	BFLB_PINMUX(17, spi, mosi, periph)
 
 /* gpio17_i2c_sda */
 #define GPIO17_I2C_SDA \
@@ -778,9 +778,9 @@
 #define GPIO20_FLASH_D0 \
 	BFLB_PINMUX(20, flash, d0, periph)
 
-/* gpio20_spi_mosi */
-#define GPIO20_SPI_MOSI \
-	BFLB_PINMUX(20, spi, mosi, periph)
+/* gpio20_spi_miso */
+#define GPIO20_SPI_MISO \
+	BFLB_PINMUX(20, spi, miso, periph)
 
 /* gpio20_i2c_scl */
 #define GPIO20_I2C_SCL \
@@ -834,9 +834,9 @@
 #define GPIO21_FLASH_CS \
 	BFLB_PINMUX(21, flash, cs, periph)
 
-/* gpio21_spi_miso */
-#define GPIO21_SPI_MISO \
-	BFLB_PINMUX(21, spi, miso, periph)
+/* gpio21_spi_mosi */
+#define GPIO21_SPI_MOSI \
+	BFLB_PINMUX(21, spi, mosi, periph)
 
 /* gpio21_i2c_sda */
 #define GPIO21_I2C_SDA \

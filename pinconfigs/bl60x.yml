@@ -46,7 +46,7 @@ pins:
     periph:
       - [sdio, [clk]]
       - [flash, [d1]]
-      - [spi, [mosi]]
+      - [spi, [miso]]
       - [i2c, [scl]]
       - [uart0, [rts, cts, tx, rx]]
       - [uart1, [rts, cts, tx, rx]]
@@ -60,7 +60,7 @@ pins:
     periph:
       - [sdio, [cmd]]
       - [flash, [d2]]
-      - [spi, [miso]]
+      - [spi, [mosi]]
       - [i2c, [sda]]
       - [uart0, [rts, cts, tx, rx]]
       - [uart1, [rts, cts, tx, rx]]
@@ -100,7 +100,7 @@ pins:
       - [adc, [ch1]]
     periph:
       - [sdio, [dat2]]
-      - [spi, [mosi]]
+      - [spi, [miso]]
       - [i2c, [scl]]
       - [uart0, [rts, cts, tx, rx]]
       - [uart1, [rts, cts, tx, rx]]
@@ -112,7 +112,7 @@ pins:
     analog:
       - [adc, [ch4]]
     periph:
-      - [spi, [miso]]
+      - [spi, [mosi]]
       - [i2c, [sda]]
       - [uart0, [rts, cts, tx, rx]]
       - [uart1, [rts, cts, tx, rx]]
@@ -134,7 +134,7 @@ pins:
   gpio7:
     series: [602, 604]
     periph:
-      - [spi, [sck]]
+      - [spi, [sclk]]
       - [i2c, [sda]]
       - [uart0, [rts, cts, tx, rx]]
       - [uart1, [rts, cts, tx, rx]]
@@ -144,7 +144,7 @@ pins:
   gpio8:
     series: [602, 604]
     periph:
-      - [spi, [mosi]]
+      - [spi, [miso]]
       - [i2c, [scl]]
       - [uart0, [rts, cts, tx, rx]]
       - [uart1, [rts, cts, tx, rx]]
@@ -156,7 +156,7 @@ pins:
     analog:
       - [adc, [ch6]]
     periph:
-      - [spi, [miso]]
+      - [spi, [mosi]]
       - [i2c, [sda]]
       - [uart0, [rts, cts, tx, rx]]
       - [uart1, [rts, cts, tx, rx]]
@@ -198,7 +198,7 @@ pins:
     input:
       - [ir, [rx]]
     periph:
-      - [spi, [mosi]]
+      - [spi, [miso]]
       - [i2c, [scl]]
       - [uart0, [rts, cts, tx, rx]]
       - [uart1, [rts, cts, tx, rx]]
@@ -213,7 +213,7 @@ pins:
     input:
       - [ir, [rx]]
     periph:
-      - [spi, [miso]]
+      - [spi, [mosi]]
       - [i2c, [sda]]
       - [uart0, [rts, cts, tx, rx]]
       - [uart1, [rts, cts, tx, rx]]
@@ -248,7 +248,7 @@ pins:
   gpio16:
     series: [602, 604]
     periph:
-      - [spi, [mosi]]
+      - [spi, [miso]]
       - [i2c, [scl]]
       - [uart0, [rts, cts, tx, rx]]
       - [uart1, [rts, cts, tx, rx]]
@@ -259,7 +259,7 @@ pins:
     series: [602, 604]
     periph:
       - [flash, [d3]]
-      - [spi, [miso]]
+      - [spi, [mosi]]
       - [i2c, [sda]]
       - [uart0, [rts, cts, tx, rx]]
       - [uart1, [rts, cts, tx, rx]]
@@ -292,7 +292,7 @@ pins:
     series: [602, 604]
     periph:
       - [flash, [d0]]
-      - [spi, [mosi]]
+      - [spi, [miso]]
       - [i2c, [scl]]
       - [uart0, [rts, cts, tx, rx]]
       - [uart1, [rts, cts, tx, rx]]
@@ -303,7 +303,7 @@ pins:
     series: [602, 604]
     periph:
       - [flash, [cs]]
-      - [spi, [miso]]
+      - [spi, [mosi]]
       - [i2c, [sda]]
       - [uart0, [rts, cts, tx, rx]]
       - [uart1, [rts, cts, tx, rx]]
